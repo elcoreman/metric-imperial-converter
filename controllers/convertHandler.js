@@ -8,12 +8,36 @@
 
 function ConvertHandler() {
   var units = {
-    gal: { to: "L", val: 3.78541, initName: "gallons", returnUnit: "liters" },
-    L: { to: "gal", val: 1 / 3.78541 },
-    lbs: { to: "kg", val: 0.453592 },
-    kg: { to: "lbs", val: 1 / 0.453592 },
-    mi: { to: "km", val: 1.60934 },
-    km: { to: "mi", val: 1 / 1.60934 }
+    gal: {
+      returnUnit: "L",
+      ratio: 3.78541,
+      spellOutInitUnit: "gallons"
+    },
+    L: {
+      returnUnit: "gal",
+      ratio: 1 / 3.78541,
+      spellOutInitUnit: "liters"
+    },
+    lbs: {
+      returnUnit: "kg",
+      ratio: 0.453592,
+      spellOutInitUnit: "pounds"
+    },
+    kg: {
+      returnUnit: "lbs",
+      ratio: 1 / 0.453592,
+      spellOutInitUnit: "kilograms"
+    },
+    mi: {
+      returnUnit: "km",
+      ratio: 1.60934,
+      spellOutInitUnit: "miles"
+    },
+    km: {
+      returnUnit: "mi",
+      ratio: 1 / 1.60934,
+      spellOutInitUnit: "kilameters"
+    }
   };
   this.getNum = function(input) {
     var result;
@@ -31,13 +55,13 @@ function ConvertHandler() {
 
   this.getReturnUnit = function(initUnit) {
     var result;
-    result = units[initUnit].to;
+    result = units[initUnit].returnUnit;
     return result;
   };
 
   this.spellOutUnit = function(unit) {
     var result;
-
+    result = units[unit].spellOutInitUnit;
     return result;
   };
 
