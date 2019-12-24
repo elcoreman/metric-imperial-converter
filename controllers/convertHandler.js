@@ -70,13 +70,15 @@ function ConvertHandler() {
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;*/
     var result;
-    result = ;
+    result = initNum * units[initUnit].ratio;
     return result;
   };
 
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
     var result;
-
+    result = `${initNum} ${this.spellOutUnit(
+      initUnit
+    )} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}`;
     return result;
   };
 }
