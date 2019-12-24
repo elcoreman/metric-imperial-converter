@@ -66,11 +66,11 @@ function ConvertHandler() {
   };
 
   this.convert = function(initNum, initUnit) {
-    const galToL = 3.78541;
+    /*const galToL = 3.78541;
     const lbsToKg = 0.453592;
-    const miToKm = 1.60934;
+    const miToKm = 1.60934;*/
     var result;
-
+    result = ;
     return result;
   };
 
