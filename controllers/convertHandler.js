@@ -8,7 +8,7 @@
 
 function ConvertHandler() {
   var units = {
-    gal: { to: "L", val: 3.78541, initName },
+    gal: { to: "L", val: 3.78541, initName: "gallons", returnUnit: "liters" },
     L: { to: "gal", val: 1 / 3.78541 },
     lbs: { to: "kg", val: 0.453592 },
     kg: { to: "lbs", val: 1 / 0.453592 },
