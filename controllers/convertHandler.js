@@ -10,7 +10,7 @@ function ConvertHandler() {
   
   this.getNum = function(input) {
     var result;
-    result = input.trim().substr(0, input.indexOf(/[]/i));
+    result = input.trim().substring(0, "3.59e".search(/[^1-9\.\/]/i))
     return result;
   };
   
