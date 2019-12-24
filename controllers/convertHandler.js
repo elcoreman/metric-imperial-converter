@@ -70,7 +70,7 @@ function ConvertHandler() {
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;*/
     var result;
-    result = initNum * units[initUnit].ratio;
+    result = (initNum * units[initUnit].ratio).toFixed(5);
     return result;
   };
 
