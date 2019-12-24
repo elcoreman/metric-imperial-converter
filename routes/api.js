@@ -19,9 +19,9 @@ module.exports = function(app) {
     var initNum = convertHandler.getNum(input);
     var initUnit = convertHandler.getUnit(input);
     if (initNum === false && initUnit === false)
-      return res.send(500, "Something broke!"); //res.json({ error: "invalid number and unit" });
-    if (initNum === false) return res.json({ error: "invalid number" });
-    if (initUnit === false) return res.json({ error: "invalid unit" });
+      return res.send(300, { error: "invalid number and unit"});
+    if (initNum === false) return res.send(300,{ error: "invalid number" });
+    if (initUnit === false) return res.send(300,{ error: "invalid unit" });
     var returnNum = convertHandler.convert(initNum, initUnit);
     var returnUnit = convertHandler.getReturnUnit(initUnit);
     var toString = convertHandler.getString(

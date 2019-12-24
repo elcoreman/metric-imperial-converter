@@ -41,7 +41,7 @@ function ConvertHandler() {
   };
   this.getNum = function(input) {
     var result;
-    result = Number(input.trim().substring(0, input.search(/[^1-9\.\/]/)));
+    result = parseFloat(input.trim().substring(0, input.search(/[^1-9\.\/]/)));
     if (result !== result) result = false;
     return result;
   };
@@ -70,7 +70,7 @@ function ConvertHandler() {
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;*/
     var result;
-    result = (initNum * units[initUnit].ratio).toFixed(5);
+    result = (initNum * units[initUnit].ratio ).toFixed(5);
     return result;
   };
 
