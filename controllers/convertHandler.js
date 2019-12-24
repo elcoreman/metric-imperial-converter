@@ -7,11 +7,14 @@
  */
 
 function ConvertHandler() {
-  var units = ["gal", "L", "lbs", "kg", "mi", "km"];
-  var u = {
-    gal: {to: "L",
-         val: }
-  }
+  var units = {
+    gal: { to: "L", val: 3.78541, initName },
+    L: { to: "gal", val: 1 / 3.78541 },
+    lbs: { to: "kg", val: 0.453592 },
+    kg: { to: "lbs", val: 1 / 0.453592 },
+    mi: { to: "km", val: 1.60934 },
+    km: { to: "mi", val: 1 / 1.60934 }
+  };
   this.getNum = function(input) {
     var result;
     result = Number(input.trim().substring(0, input.search(/[^1-9\.\/]/)));
@@ -22,13 +25,13 @@ function ConvertHandler() {
   this.getUnit = function(input) {
     var result;
     result = input.trim().substring(input.search(/[^1-9\.\/]/));
-    
+    if (!units[result]) result = false;
     return result;
   };
 
   this.getReturnUnit = function(initUnit) {
     var result;
-
+    result = units[initUnit].to;
     return result;
   };
 
