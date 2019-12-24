@@ -10,7 +10,7 @@ function ConvertHandler() {
   
   this.getNum = function(input) {
     var result;
-    
+    result = input.trim().substr(0, input.indexOf(/[]/i));
     return result;
   };
   
