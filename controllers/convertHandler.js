@@ -1,19 +1,11 @@
-/*
- *
- *
- *       Complete the handler logic below
- *
- *
- */
-
 function ConvertHandler() {
   var units = {
     gal: {
-      returnUnit: "L",
+      returnUnit: "l",
       ratio: 3.78541,
       spellOutInitUnit: "gallons"
     },
-    L: {
+    l: {
       returnUnit: "gal",
       ratio: 1 / 3.78541,
       spellOutInitUnit: "liters"
@@ -41,44 +33,51 @@ function ConvertHandler() {
   };
   this.getNum = function(input) {
     var result;
-    result = parseFloat(
-      input
-        .trim()
-        .substr(0, input.search(/[^1-9\.\/]/) == -1 ? input.length : input.search(/[^1-9\.\/]/))
-    );
+    result = input.trim().match(/^[0-9\.\/]+/)[0];
+    result = result.split("/");
+    result = result[0] / (result[1] || 1);
+    result = Number(result);
     if (result !== result) result = false;
     return result;
   };
 
   this.getUnit = function(input) {
     var result;
-    result = input.trim().substring(input.search(/[^1-9\.\/]/));
+    result = input
+      .trim()
+      .substring(input.search(/[^1-9\.\/]/))
+      .toLowerCase();
     if (!units[result]) result = false;
     return result;
   };
 
   this.getReturnUnit = function(initUnit) {
     var result;
-    result = units[initUnit].returnUnit;
+    result = units[initUnit] ? units[initUnit].returnUnit : false;
     return result;
   };
 
   this.spellOutUnit = function(unit) {
     var result;
-    result = units[unit].spellOutInitUnit;
+    result = units[unit] ? units[unit].spellOutInitUnit : false;
     return result;
   };
 
   this.convert = function(initNum, initUnit) {
-    /*const galToL = 3.78541;
-    const lbsToKg = 0.453592;
-    const miToKm = 1.60934;*/
+    if (initNum === false || initUnit === false) return false;
     var result;
     result = (initNum * units[initUnit].ratio).toFixed(5);
     return result;
   };
 
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
+    if (
+      initNum === false ||
+      initUnit === false ||
+      returnNum === false ||
+      returnUnit === false
+    )
+      return false;
     var result;
     result = `${initNum} ${this.spellOutUnit(
       initUnit
