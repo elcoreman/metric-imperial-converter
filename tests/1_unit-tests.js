@@ -26,7 +26,7 @@ suite("Unit Tests", function() {
 
     test("Fractional Input w/ Decimal", function(done) {
       var input = "32.16/8L";
-      assert.equal(convertHandler.getNum(input), 4.2);
+      assert.equal(convertHandler.getNum(input), 4.02);
       done();
     });
 
@@ -61,7 +61,7 @@ suite("Unit Tests", function() {
       ];
       input.forEach(function(ele) {
         var input = "32" + ele;
-        assert.include(convertHandler.getUnit(ele), input);
+        assert.include(input, convertHandler.getUnit(ele));
       });
       done();
     });
@@ -105,7 +105,7 @@ suite("Unit Tests", function() {
   suite("Function convertHandler.convert(num, unit)", function() {
     test("Gal to L", function(done) {
       var input = [5, "gal"];
-      var expected = 18.9271;
+      var expected = 18.92705;
       assert.approximately(
         convertHandler.convert(input[0], input[1]),
         expected,
